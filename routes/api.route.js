@@ -13,8 +13,9 @@ const transporter = nodemailer.createTransport({
 });
 
 router.post("/send-email", async (req, res) => {
-  const { email, message, firstname, lastname, messageType } = req.body;
-
+  const { email, message, firstName, lastName, messageType } = req.body;
+const lastname = lastName
+const firstname = firstName
   if (!email || !message || !firstname || !lastname || !messageType) {
     return res.status(400).send({ error: "All fields are required" });
   }
@@ -24,12 +25,12 @@ router.post("/send-email", async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER, // Sending to yourself
-      subject: `📧 New Inquiry from ${firstname} ${lastname}`,
+      subject: `📧 New Message from ${firstname} ${lastname}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; border-radius: 10px;">
-          <h2 style="color: #e53935; text-align: center;">📩 New Inquiry Received</h2>
+          <h2 style="color: #e53935; text-align: center;">📩 New Message Received</h2>
           <p style="color: #555; font-size: 1.1em;">
-            You have a new inquiry submitted through your website. Here are the details:
+            You have a new message submitted through your website. Here are the details:
           </p>
           
           <table style="width: 100%; margin: 20px 0; border-collapse: collapse;">
@@ -60,8 +61,8 @@ router.post("/send-email", async (req, res) => {
           </p>
           
           <footer style="text-align: center; margin-top: 20px; color: #999; font-size: 0.85em;">
-            <p>&copy; ${new Date().getFullYear()} Your Website Name. All rights reserved.</p>
-            <p style="margin: 0;">This email was automatically generated. Please do not reply to this email.</p>
+            <p>&copy; ${new Date().getFullYear()} TopCars. All rights reserved.</p>
+            <p style="margin: 0;">This email was sent automatically. Please do not reply to this email.</p>
           </footer>
         </div>
       `,

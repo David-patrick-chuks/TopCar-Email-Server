@@ -8,6 +8,7 @@ const connectDB = require("./config/db"); // Import MongoDB connection
 const { acknowledgmentEmailCron, weeklyFollowUpCron } = require("./crons");
 const app = express();
 
+connectDB();
 // CORS Configuration
 const allowedOrigins = [
   "http://localhost:5173", // Localhost (development)
@@ -42,7 +43,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 // Connect to MongoDB
-connectDB();
 app.get("/", async (req, res, next) => {
   res.send({ message: "Awesome it works 🐻" });
 });
