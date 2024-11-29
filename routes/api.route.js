@@ -24,7 +24,7 @@ const firstname = firstName
     // Send email
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Sending to yourself
+      to: process.env.SITE_OWNER_EMAIL, // Sending to yourself
       subject: `📧 New Message from ${firstname} ${lastname}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; border-radius: 10px;">
