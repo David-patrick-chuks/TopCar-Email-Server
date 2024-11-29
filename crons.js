@@ -35,14 +35,20 @@ const acknowledgmentEmailCron = () => {
             to: email,
             subject: 'We’ve Received Your Message!',
             html: `
-              <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-                <h2 style="color: #e53935;">Thank you, ${firstname}!</h2>
-                <p>We’ve received your message:</p>
-                <blockquote style="color: #555; font-style: italic;">${message}</blockquote>
-                <p>Our team will get back to you shortly.</p>
-                <p>Best regards,<br>Your Company Team</p>
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; padding: 20px; background-color: #f9f9f9; border-radius: 8px; max-width: 600px; margin: 0 auto;">
+              <div style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <h2 style="color: #e53935; font-size: 24px; margin-bottom: 20px;">Thank you, ${firstname}!</h2>
+                <p style="font-size: 16px; margin-bottom: 20px;">We’ve received your message:</p>
+                <blockquote style="color: #555; font-style: italic; font-size: 16px; border-left: 4px solid #e53935; padding-left: 15px; margin-bottom: 20px;">
+                  ${message}
+                </blockquote>
+                <p style="font-size: 16px; margin-bottom: 30px;">Our team will get back to you shortly. We appreciate your patience.</p>
+                <p style="font-size: 16px; margin-bottom: 30px;">For more information, feel free to visit our website: <a href="https://lease-car.vercel.app" style="color: #e53935; text-decoration: none;">TopCars</a></p>
+                <p style="font-size: 16px;">Best regards,<br><strong>TopCars Team</strong></p>
               </div>
-            `,
+            </div>
+          `
+          
           };
 
           // Send the email
