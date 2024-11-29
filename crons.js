@@ -1,7 +1,7 @@
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
 const Client = require('./model/Client'); // Import Client model
-
+require("dotenv").config();
 // 5-minute acknowledgment email cron job
 const acknowledgmentEmailCron = () => {
   cron.schedule('* * * * *', async () => { // Runs every minute
